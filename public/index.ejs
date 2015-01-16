@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<title>Customers</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.min.js"></script>
+	<script type="text/javascript" src="./javascipts/app.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/factories.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+<body>
+	<div ng-app="miniStore">
+		<a href="#/orders">Orders</a> | <a href="#/customers">Customers</a>
+		<div ng-view="">
+		</div>
+	</div>
+</body>
+</html>
