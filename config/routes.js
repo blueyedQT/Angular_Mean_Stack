@@ -11,7 +11,10 @@ module.exports = function Routes(app){
 	app.post('/add_customer', function(req, res){
 		store.add_customer(req, res);
 	});
-	app.post('/remove_customer', function(req, res){
+	app.get('/remove_customer/:id', function(req, res){
 		store.remove_customer(req, res);
+	});
+	app.post('/get_products', function(req, res){
+		store.get_products(req, res);
 	});
 };

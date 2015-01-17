@@ -4,7 +4,7 @@ miniStore.factory('CustomerFactory', function($http){
 	var errors = {};
 	var factory = {};
 	var customers = [];
-	var customer = [];
+	// var customer = [];
 	factory.getCustomers = function(callback){
 		$http.get('/get_customers').success(function(output){
 			customers = output;
@@ -30,30 +30,40 @@ miniStore.factory('CustomerFactory', function($http){
 	factory.getErrors = function(){
 		return errors;
 	};
-
-
-	factory.removeCustomer = function(name){
-		$http.post('/remove_customer').success(function(output){
-			customer = output;
-			callback(customer);
+	factory.removeCustomer = function(info){
+		$http.get('/remove_customer/'+info).success(function(output){
 			for(var i = 0; i<customers.length; i++){
-				if(customers[i].name === name) {
+				if(customers[i].name === info) {
 					customers.splice(i, 1);
 				}
 			}
 		});
+		// customer = output;
+		// callback(customer);		
 	};
 	return factory;
 });
 
-miniStore.factory('OrderFactory', function(){
+miniStore.factory('OrderFactory', function($http){
 	var factory = {};
-	factory.getCustomers = function(){
-		return customers;
+	var customers = [];
+	var products = [];
+	factory.getCustomers = function(callback){
+		$http.get('/get_customers').success(function(output){
+			customers = output;
+			callback(customers);
+		});
 	};
-	factory.getProducts = function(){
-		return products;
+
+	factory.getProducts = function(callback){
+		$http.get('/get_products').success(function(output){
+			products = output;
+			callback(products);
+		});
 	};
+	// factory.getProducts = function(){
+	// 	return products;
+	// };
 	factory.getOrders = function(){
 		return orders;
 	};

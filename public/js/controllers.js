@@ -7,14 +7,21 @@ miniStore.controller('Customers', function($scope, CustomerFactory){
 		$scope.customers = data;
 	});
 	$scope.errors = CustomerFactory.getErrors();
-	
+
 	$scope.removeCustomer = function(name){
+		console.log(name);
 		CustomerFactory.removeCustomer(name);
 	};
 });
 
 miniStore.controller('Orders', function($scope, OrderFactory){
-	$scope.customers = OrderFactory.getCustomers();
+	OrderFactory.getCustomers(function(data) {
+		$scope.customers = data;
+	});
+	OrderFactory.getProducts(function(data) {
+		$scope.products = data;
+	});
+
 	$scope.products = OrderFactory.getProducts();
 	$scope.orders = OrderFactory.getOrders();
 	$scope.addOrder = function(){

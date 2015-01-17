@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Customer = mongoose.model('Customers');
+var Product = mongoose.model('Products');
 
 module.exports = {
 	index: function(req, res) {
@@ -18,12 +19,10 @@ module.exports = {
 		});
 	},
 	add_customer: function(req, res) {
-		// console.log('Sever controller customer: '+ req.body);
 		var a = new Customer(req.body);
 		a.save(function(err, result) {
-			console.log(result);
 			if(err){
-				res.send('No');
+				res.send(err);
 			} else {
 				res.send(result._id);
 			}
@@ -33,12 +32,18 @@ module.exports = {
 		// });
 	},
 	remove_customer: function(req, res) {
-		Customer.remove({ name: req.params.name }, function(err){
+		console.log(req.params.id);
+		Customer.remove({ name: req.params.id }, function(err){
 			if(err) {
 				res.send(JSON.stringify(err));
 			} else {
 				res.send('deleted');
 			}
+		});
+	},
+	get_products: function(req, res) {
+		Product.find({}, function(err, results){
+			res.send(results);
 		});
 	}
 }
