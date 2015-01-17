@@ -1,7 +1,8 @@
 miniStore.controller('Customers', function($scope, CustomerFactory){
 	$scope.customers = CustomerFactory.getCustomers();
 	$scope.addCustomer = function(){
-		CustomerFactory.addCustomer($scope.new_customer);
+		// console.log('Scope: '+ $scope.new_customer.name);
+		CustomerFactory.addCustomer($scope.new_customer.name);
 	};
 	$scope.errors = CustomerFactory.getErrors();
 	$scope.removeCustomer = function(name){

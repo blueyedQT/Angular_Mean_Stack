@@ -1,13 +1,14 @@
 var express = require('express');
+var config = require('./config/config.js');
 var path = require('path');
 var http = require('http');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('./config/mongoose');
 
 var app = express();
+
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
 
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var mongoose = require('./config/mongoose');
 
 var routes = require('./config/routes')(app);
 

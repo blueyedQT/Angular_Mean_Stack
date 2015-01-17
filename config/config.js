@@ -13,12 +13,20 @@ var path = require('path'),
 	}
 module.exports = {
 	development: {
-		db: 'mongodb://localhost/AngularMeanStack',
+		db: 'mongodb://localhost/mean_stack',
 		root: rootPath,
 		notifier: notifier,
 		app: {
 			name: 'Mean Stack'
 		}
+	},
+	test: {
+	    db: 'mongodb://localhost/mean_stack',
+	    root: rootPath,
+	    notifier: notifier,
+	    app:{
+	      name: 'Mean Stack Test'
+	    }
 	},
 	production: {}
 }

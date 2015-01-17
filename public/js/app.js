@@ -11,6 +11,11 @@ var customers =[
 	{name: 'Justin', created_date: 'July 23 2015'},
 	{name: 'Zachary', created_date: 'August 23 2015'}
 ];
+// var customers = function(){
+// 	return $http.get('/cusotmers_json').success(function(data){
+// 		angular.copy(data);
+// 	});
+// };
 var products =[
 	{name: 'Nike Shoes'},
 	{name: 'Black Belts'},

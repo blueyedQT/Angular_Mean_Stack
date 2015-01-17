@@ -10,7 +10,7 @@ var connect = function() {
 connect();
 
 mongoose.connection.on('error', function(err) {
-	console.log(err);
+	console.log('Connection problem: '+ err);
 });
 mongoose.connection.on('disconnected', function() {
 	connect();
@@ -18,7 +18,7 @@ mongoose.connection.on('disconnected', function() {
 
 var models_path = __dirname + '/../server/models';
 fs.readdirSync(models_path).forEach(function(file) {
-	if(~file.indexOf('.js')) {
+	if (~file.indexOf('.js')) {
 		require(models_path + '/' + file);
 	}
 });

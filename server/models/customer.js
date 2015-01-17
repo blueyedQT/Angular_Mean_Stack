@@ -1,4 +1,6 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema;
+
 var CustomerSchema = new mongoose.Schema({
 	name: String,
 	date_created: {
@@ -8,4 +10,4 @@ var CustomerSchema = new mongoose.Schema({
 	hidden: Boolean
 });
 // CustomerSchema.path('customer_name').required(true, 'Customer name cannot be blank');
-mongoose.model('Customer', CustomerSchema);
+mongoose.model('Customers', CustomerSchema);

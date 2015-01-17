@@ -1,20 +1,34 @@
-miniStore.factory('CustomerFactory', function(){
+// var store = require('/server/controllers/store.js');
+
+miniStore.factory('CustomerFactory', function($http){
 	var errors = {};
 	var factory = {};
+	var customers = [];
 	factory.getCustomers = function(){
-		return customers;
+		// return customers;
+		$http.get('/get_customers').success(function(output){
+			// customer = output;
+			// return customer;
+			console.log('Get Customers Factory: '+ output);
+		});
 	};
 	factory.addCustomer = function(info){
-		for(var i=0; i<customers.length; i++){
-			if(customers[i].name === info.name){
-				errors.message = 'The name already exisits in our system';
-				return false;
-			}
-		}
-		customers.push({
-			name: info.name,
-			created_date: Date.now()
+		var customer = {name: info};
+		console.log(customer);
+		$http.post('/add_customer', customer).success(function(output){
+			console.log('Output ' + output);
 		});
+		// store.add_customer(info);
+		// for(var i=0; i<customers.length; i++){
+		// 	if(customers[i].name === info.name){
+		// 		errors.message = 'The name already exisits in our system';
+		// 		return false;
+		// 	}
+		// }
+		// customers.push({
+		// 	name: info.name,
+		// 	created_date: Date.now()
+		// });
 		errors.message = '';
 	};
 	factory.getErrors = function(){
