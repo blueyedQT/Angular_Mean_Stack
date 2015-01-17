@@ -4,13 +4,6 @@ miniStore.config(function($routeProvider){
 	.when('/orders', {templateUrl: 'partials/orders.html'})
 	.when('/customers', {templateUrl: 'partials/customers.html'});
 });
-
-var customers =[
-	{name: 'Katrina', created_date: 'April 23 2015'},
-	{name: 'Timothy', created_date: 'June 23 2015'},
-	{name: 'Justin', created_date: 'July 23 2015'},
-	{name: 'Zachary', created_date: 'August 23 2015'}
-];
 // var customers = function(){
 // 	return $http.get('/cusotmers_json').success(function(data){
 // 		angular.copy(data);

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Customers = mongoose.model('Customers');
+var Customer = mongoose.model('Customers');
 
 module.exports = {
 	index: function(req, res) {
@@ -12,24 +12,33 @@ module.exports = {
 	// 	});
 	// },
 	get_customers: function(req, res) {
-		Customers.find({}, function(err, results){
+		Customer.find({}, function(err, results){
 			console.log(err);
 			res.send(results);
 		});
 	},
 	add_customer: function(req, res) {
-
-		console.log('Sever controller customer: '+ req.body);
-		var a = new Customers(req.body);
-		a.save(function(err){
+		// console.log('Sever controller customer: '+ req.body);
+		var a = new Customer(req.body);
+		a.save(function(err, result) {
+			console.log(result);
 			if(err){
 				res.send('No');
 			} else {
-				res.send('YES');
+				res.send(result._id);
 			}
 		});
 		// Customer.save(function (err, result){
 		// 	res.send(JSON.stringify(result));
 		// });
+	},
+	remove_customer: function(req, res) {
+		Customer.remove({ name: req.params.name }, function(err){
+			if(err) {
+				res.send(JSON.stringify(err));
+			} else {
+				res.send('deleted');
+			}
+		});
 	}
 }
