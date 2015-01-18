@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Customer = mongoose.model('Customers');
 var Product = mongoose.model('Products');
+var Order = mongoose.model('Orders');
 
 module.exports = {
 	index: function(req, res) {
@@ -35,6 +36,18 @@ module.exports = {
 	get_products: function(req, res) {
 		Product.find({}, function(err, results){
 			res.send(results);
+		});
+	},
+
+
+	add_order: function(req, res){
+		var a = new Order(req.body);
+		a.save(function(err, result){
+			if(err){
+				res.send(err);
+			} else {
+				res.send(result._id);
+			}
 		});
 	}
 }

@@ -54,26 +54,28 @@ miniStore.factory('OrderFactory', function($http){
 			callback(customers);
 		});
 	};
-
 	factory.getProducts = function(callback){
 		$http.get('/get_products').success(function(output){
 			products = output;
 			callback(products);
 		});
 	};
-	// factory.getProducts = function(){
-	// 	return products;
-	// };
+
+
 	factory.getOrders = function(){
 		return orders;
 	};
+
 	factory.addOrder = function(info){
 		console.log(info);
-		orders.push({
-			customer_name: info.name,
+		var order = {
+			customer: info.customer, 
 			product: info.product,
 			quantity: info.quantity,
-			date: Date.now()
+			date_created: Date.now()
+		};
+		$http.post('/add_order', info).success(function(output){
+			orders.push(order);
 		});
 	};
 	return factory;

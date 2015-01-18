@@ -3,7 +3,7 @@
 			<p class="red" ng-bind="errors.message"></p>
 			<p>
 				Customer:
-				<select ng-model="new_order.name" ng-options="customer.name as customer.name for customer in customers">
+				<select ng-model="new_order.customer" ng-options="customer.name as customer.name for customer in customers">
 				</select>
 			</p>
 			<p>
@@ -33,10 +33,10 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="order in orders | filter: filter_name | orderBy: 'date'">
-						<td ng-bind="order.customer_name"></td>
+						<td ng-bind="order.customer"></td>
 						<td class="border-left" ng-bind="order.product"></td>
 						<td class="border-left" ng-bind="order.quantity"></td>
-						<td class="border-left" ng-bind="order.date | date: 'MMMM d yyyy'"></td>
+						<td class="border-left" ng-bind="order.date_created | date: 'MMMM d yyyy'"></td>
 					</tr>
 				</tbody>
 			</table>

@@ -16,4 +16,10 @@ module.exports = function Routes(app){
 	app.get('/get_products', function(req, res){
 		store.get_products(req, res);
 	});
+	// app.get('/get_orders', function(req, res){
+	// 	store.get_orders(req, res);
+	// });
+	app.post('/add_order', function(req, res){
+		store.add_order(req, res);
+	});
 };
