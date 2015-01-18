@@ -48,6 +48,7 @@ miniStore.factory('OrderFactory', function($http){
 	var factory = {};
 	var customers = [];
 	var products = [];
+	var orders = [];
 	factory.getCustomers = function(callback){
 		$http.get('/get_customers').success(function(output){
 			customers = output;
@@ -62,8 +63,14 @@ miniStore.factory('OrderFactory', function($http){
 	};
 
 
-	factory.getOrders = function(){
-		return orders;
+	// factory.getOrders = function(){
+	// 	return orders;
+	// };
+	factory.getOrders = function(callback){
+		$http.get('/get_orders').success(function(output){
+			orders = output;
+			callback(orders);
+		});
 	};
 
 	factory.addOrder = function(info){

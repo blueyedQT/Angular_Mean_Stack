@@ -38,7 +38,11 @@ module.exports = {
 			res.send(results);
 		});
 	},
-
+	get_orders: function(req, res) {
+		Order.find({}, function(err, results){
+			res.send(results);
+		});
+	},
 
 	add_order: function(req, res){
 		var a = new Order(req.body);

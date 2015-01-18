@@ -22,9 +22,9 @@ miniStore.controller('Orders', function($scope, OrderFactory){
 	OrderFactory.getProducts(function(data) {
 		$scope.products = data;
 	});
-
-
-	$scope.orders = OrderFactory.getOrders();
+	OrderFactory.getOrders(function(data) {
+		$scope.orders = data;
+	});
 	$scope.addOrder = function(){
 		OrderFactory.addOrder($scope.new_order);
 	};
