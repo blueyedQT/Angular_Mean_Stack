@@ -9,5 +9,5 @@ var CustomerSchema = new mongoose.Schema({
 	},
 	hidden: Boolean
 });
-CustomerSchema.path('name').required(true, 'Customer name cannot be blank');
+// CustomerSchema.path('name').required(true, 'Customer name cannot be blank');
 mongoose.model('Customers', CustomerSchema);

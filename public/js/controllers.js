@@ -1,6 +1,5 @@
 miniStore.controller('Customers', function($scope, CustomerFactory){
 	$scope.addCustomer = function(){
-		console.log($scope.new_customer);
 		CustomerFactory.addCustomer($scope.new_customer);
 	};
 	CustomerFactory.getCustomers(function(data) {
@@ -8,7 +7,6 @@ miniStore.controller('Customers', function($scope, CustomerFactory){
 	});
 	$scope.errors = CustomerFactory.getErrors();
 	$scope.removeCustomer = function(name){
-		console.log(name);
 		CustomerFactory.removeCustomer(name);
 	};
 });

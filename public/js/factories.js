@@ -9,20 +9,24 @@ miniStore.factory('CustomerFactory', function($http){
 		});
 	};
 	factory.addCustomer = function(info){
-		for(var i=0; i<customers.length; i++){
-			if(customers[i].name === info.name){
-				errors.message = 'The name already exisits in our system';
-				return false;
+		if(info.name) {
+			for(var i=0; i<customers.length; i++){
+				if(customers[i].name === info.name){
+					errors.message = 'The name already exisits in our system';
+					return false;
+				}
 			}
+			var customer = {
+				name: info.name, 
+				date_created: Date.now()
+			};
+			$http.post('/add_customer', info).success(function(output){
+				customers.push(customer);
+			});
+			errors.message = '';
+		} else {
+			errors.message = 'Customer name can not be blank';
 		}
-		var customer = {
-			name: info.name, 
-			date_created: Date.now()
-		};
-		$http.post('/add_customer', info).success(function(output){
-			customers.push(customer);
-		});
-		errors.message = '';
 	};
 	factory.getErrors = function(){
 		return errors;
