@@ -5,13 +5,7 @@ var Product = mongoose.model('Products');
 module.exports = {
 	index: function(req, res) {
 		res.render('index', {});
-		// res.render('index', {title: 'Welcome to the Mean Stack Store'});
 	},
-	// index_json: function(req, res) {
-	// 	Customer.find({}, function(err, customer_array) {
-	// 		res.send(JSON.stringify(results));
-	// 	});
-	// },
 	get_customers: function(req, res) {
 		Customer.find({}, function(err, results){
 			console.log(err);
@@ -27,9 +21,6 @@ module.exports = {
 				res.send(result._id);
 			}
 		});
-		// Customer.save(function (err, result){
-		// 	res.send(JSON.stringify(result));
-		// });
 	},
 	remove_customer: function(req, res) {
 		console.log(req.params.id);
