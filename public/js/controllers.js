@@ -7,8 +7,6 @@ miniStore.controller('Customers', function($scope, CustomerFactory){
 		$scope.customers = data;
 	});
 	$scope.errors = CustomerFactory.getErrors();
-
-
 	$scope.removeCustomer = function(name){
 		console.log(name);
 		CustomerFactory.removeCustomer(name);

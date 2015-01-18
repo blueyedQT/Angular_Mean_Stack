@@ -43,7 +43,6 @@ module.exports = {
 			res.send(results);
 		});
 	},
-
 	add_order: function(req, res){
 		var a = new Order(req.body);
 		a.save(function(err, result){

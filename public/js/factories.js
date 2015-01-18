@@ -1,10 +1,7 @@
-// var store = require('/server/controllers/store.js');
-
 miniStore.factory('CustomerFactory', function($http){
 	var errors = {};
 	var factory = {};
 	var customers = [];
-	// var customer = [];
 	factory.getCustomers = function(callback){
 		$http.get('/get_customers').success(function(output){
 			customers = output;
@@ -37,9 +34,7 @@ miniStore.factory('CustomerFactory', function($http){
 					customers.splice(i, 1);
 				}
 			}
-		});
-		// customer = output;
-		// callback(customer);		
+		});	
 	};
 	return factory;
 });
@@ -61,18 +56,12 @@ miniStore.factory('OrderFactory', function($http){
 			callback(products);
 		});
 	};
-
-
-	// factory.getOrders = function(){
-	// 	return orders;
-	// };
 	factory.getOrders = function(callback){
 		$http.get('/get_orders').success(function(output){
 			orders = output;
 			callback(orders);
 		});
 	};
-
 	factory.addOrder = function(info){
 		console.log(info);
 		var order = {
